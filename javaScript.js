@@ -1,10 +1,9 @@
 const gridContainer = document.querySelector("#grid-container");
-
 window.addEventListener("load", setDefaultGrid);
 
 function setDefaultGrid() {
-    setGridSize(8);
-    fillGrid(8);
+    setGridSize(7);
+    fillGrid(7);
 }
 
 function setGridSize(size) {
@@ -31,18 +30,14 @@ function changeColors(e) {
     const randomB = Math.floor(Math.random() * 256);
     e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
 }
-
-
 const button = document.querySelector("#reset-button");
 button.addEventListener("click", askGrid)
 function askGrid(params) {
-    console.log("Hola clciok");
-    let newSize = prompt("Enter new size");
-    console.log("lo queires de " + newSize);
+    let newSize = prompt("Enter new size below 35 and above 1");
     if (newSize !== null) {
         newSize = parseInt(newSize);
-        if (newSize < 1 || newSize > 64 || Number.isNaN(newSize)) {
-            alert("Enter a between  1 and 64");
+        if (newSize < 2 || newSize > 35 || Number.isNaN(newSize)) {
+            alert("Enter a between  1 and 35");
             askGrid();
         } else {
             clearGrid();
@@ -57,15 +52,37 @@ function clearGrid() {
         gridContainer.removeChild(element);
     });
 }
-
-
 function cleanGrid() {
     const elements = document.querySelectorAll(".grid-element")
     for (const iterator of elements) {
-        console.log(iterator);
-        iterator.style.baccolor = "magenta";
+        iterator.style.backgroundColor = "#e6cab6";
+    }
+}
+const buttonClear = document.querySelector("#clean-button")
+buttonClear.addEventListener('click', cleanGrid)
+//--------------------------
+//--------------------------
+//--------------------------
+
+
+const buttonColors = document.querySelector("#colors-button")
+buttonColors.addEventListener('click', moveColors)
+
+function moveColors() {
+    const elements = document.querySelectorAll(".grid-element")
+    for (const iterator of elements) {
+        iterator.addEventListener('mouseover', changeColors)
     }
 }
 
-const buttonClear = document.querySelector("#clean-button")
-buttonClear.addEventListener('click', cleanGrid)
+const buttonBrowns = document.querySelector("#brown-button")
+buttonBrowns.addEventListener('click', moveBrown)
+
+function moveBrown() {
+    console.log('Hello from browns');
+    const elements = document.querySelectorAll(".grid-element")
+    for (const iterator of elements) {
+        console.log('Hello from browns');
+        iterator.addEventListener('mouseover', changeColor)
+    }
+}
