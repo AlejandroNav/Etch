@@ -42,9 +42,15 @@ table {
 
 /*--------------------- my custom csss --------------------------*/
 
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
-    background-color:#fdc973;
-    color:#824e2a;
+    background-color: #ffe2b3;
+    color: #824e2a;
     font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
     text-align: center;
@@ -58,17 +64,51 @@ header {
     font-weight: 700;
 }
 
+.button {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 6px;
+    color: #583700;
+    border: 4px solid #583700;
+    background-color: #ffe2b3;;
+    font-family: inherit;
+    font-size: 1.9rem;
+}
+
+.button:hover {
+    background-color: #e7ab44;
+}
+
+.button:active {
+    background-color: #be892e;
+}
+
 .container {
     padding: 1rem;
 }
 
 .grid {
     display: grid;
-    max-width: 900px;
-    min-height: 900px;
-    border: 7px solid #44250f;
+    max-width: 800px;
+    min-height: 800px;
+    margin: 2rem auto;
 }
+
 .grid-element {
-    border: 1px solid rgb(0, 0, 0);
-    background-color: rgb(189, 161, 218);
+    border: 2px solid rgb(71, 44, 29);
+    background-color: #e6cab6;
+}
+
+aside {
+    margin-top: 100px;
+}
+
+@media (max-width: 450px) {
+    header {
+        font-size: 2.4rem;
+    }
+    .grid {
+        max-width: 300px;
+        min-height: 300px;
+    }
 }
